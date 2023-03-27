@@ -7,7 +7,27 @@
 	},
 	"item": [
 		{
-			"name": "getAllEmployees",
+			"name": "getAllKeys",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/employees/keys",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"employees",
+						"keys"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "getEmployeeById",
 			"request": {
 				"method": "GET",
 				"header": [],

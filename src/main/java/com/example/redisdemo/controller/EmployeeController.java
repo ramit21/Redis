@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.data.redis.core.BoundHashOperations;
 import org.springframework.data.redis.core.RedisTemplate;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -28,19 +29,17 @@ public class EmployeeController {
     private final Long ttlExpiry = 120l;
 
     @GetMapping(value="/keys")
-    @ResponseBody
-    public List<CacheKeySummary> getRedisKeys(){
+    public ResponseEntity<List<CacheKeySummary>> getRedisKeys(){
         Employee emp = Employee.builder().id(1l).name("ramit").dept(Department.builder().id(20l).name("IT").build()).build();
         Set<String> redisKeys = redisTemplate.keys(cachePrefix + "*");
-        return redisKeys.stream().map(this::mapKeyToSummary).collect(Collectors.toList());
+        return ResponseEntity.ok(redisKeys.stream().map(this::mapKeyToSummary).collect(Collectors.toList()));
     }
 
     @GetMapping(value="/{id}")
-    @ResponseBody
-    public Employee getEmployeeById(@PathVariable String id){
+    public ResponseEntity<Employee> getEmployeeById(@PathVariable String id){
         BoundHashOperations<String, String, Employee> hashOps = redisTemplate.boundHashOps( cachePrefix + id);
         Map<String, Employee> employees = hashOps.entries();
-        return employees.get(id);
+        return ResponseEntity.ok(employees.get(id));
     }
 
     @PostMapping(value = "/add")
