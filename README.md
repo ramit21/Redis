@@ -29,6 +29,8 @@ Redis cache can be used in cache aside pattern using @Cacheable.
 But in this project, we have used a more low level redisTemplate, which gives you more control as to how you save data.
 This way, you can also set TTL per cahce entry as done in this project.
 
+Postman collection with all endpoints configred is also checked in.
+
 Files to notice:
 1. LocalConfig.java: Redisson client connection to local Redis.
 2. AWSConfig.java: AWS config for Redisson client.
