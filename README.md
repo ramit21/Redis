@@ -36,4 +36,6 @@ Files to notice:
 2. AWSConfig.java: AWS config for Redisson client.
 3. EmployeeController: Various endpoints for saving, retreiving, deleting cached entries. 
    We also set TTL per entry, which is being returned in the /keys endpoint for reference.
+   After saving an employee, if you repeatedly hit cache /keys endpoint, you can see the TTL fall, 
+   and after it reaches 0, the entry is removed from cache.
 
