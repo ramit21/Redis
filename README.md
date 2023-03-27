@@ -24,3 +24,14 @@ redis-cli
 ping
 ```
 
+## About this project
+Redis cache can be used in cache aside pattern using @Cacheable.
+But in this project, we have used a more low level redisTemplate, which gives you more control as to how you save data.
+This way, you can also set TTL per cahce entry as done in this project.
+
+Files to notice:
+1. LocalConfig.java: Redisson client connection to local Redis.
+2. AWSConfig.java: AWS config for Redisson client.
+3. EmployeeController: Various endpoints for saving, retreiving, deleting cached entries. 
+   We also set TTL per entry, which is being returned in the /keys endpoint for reference.
+
