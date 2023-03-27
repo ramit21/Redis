@@ -7,8 +7,7 @@ import lombok.extern.jackson.Jacksonized;
 @Value
 @Jacksonized
 @Builder
-public class Employee {
+public class Department {
     private Long id;
     private String name;
-    private Department dept;
 }

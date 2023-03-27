@@ -1,0 +1,59 @@
+{
+	"info": {
+		"_postman_id": "404df2bc-e02b-4992-b835-bf2535581df5",
+		"name": "Redis",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "4405960"
+	},
+	"item": [
+		{
+			"name": "getAllEmployees",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/employees",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"employees"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "addEmployee",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"id\" : 2,\r\n    \"name\" : \"Anu\",\r\n    \"dept\" : {\r\n        \"id\": 100,\r\n        \"name\": \"Ops\"\r\n    }\r\n}"
+				},
+				"url": {
+					"raw": "http://localhost:8080/employees/add",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"employees",
+						"add"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
