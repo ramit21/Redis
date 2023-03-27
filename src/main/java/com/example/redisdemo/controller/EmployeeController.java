@@ -3,6 +3,7 @@ package com.example.redisdemo.controller;
 import com.example.redisdemo.model.Department;
 import com.example.redisdemo.model.Employee;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.web.bind.annotation.*;
 
@@ -12,8 +13,9 @@ import java.util.List;
 @RequestMapping("/employees")
 public class EmployeeController {
 
-    //@Autowired
-    //private RedisTemplate<String, Employee> redisTemplate;
+    @Autowired
+    @Qualifier("employeeRedisTemplate")
+    private RedisTemplate<String, Employee> redisTemplate;
 
     @GetMapping
     @ResponseBody
