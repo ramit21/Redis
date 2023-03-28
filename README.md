@@ -30,7 +30,7 @@ and set the ElasticCache password in AWS SecretManager.
 
 When creating elastic cache cluster, take t3.micro instance, disable multi az, 
 no. of nodes = 1, failover = no etc. to keep cost low for poc.
-Select SSL enabled.
+Select SSL as well as cluster mode enabled.
 Access control = select AUTH default user, and set the AUTH token.
 Do select security group that allows access to machine on which this code is being run on.
 Give cluster name = app-cache-cluster (as present in application.properties)
