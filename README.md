@@ -24,6 +24,12 @@ redis-cli
 ping
 ```
 
+## Prerequisite - Redis setup on AWS
+To run against AWS ElasticCache, you need to first create the AWS ElasticCache.
+Set the ElasticCache password in AWS SecretManager.
+
+Refer AWSConfig section below for more details on how to connect with ElastiCache from code.
+
 ## About this project
 Redis cache can be used in cache aside pattern using @Cacheable.
 But in this project, we have used a more low level redisTemplate, which gives you more control as to how you save data.
@@ -38,7 +44,14 @@ Postman collection with all endpoints configred is also checked in.
 
 Files to notice:
 1. LocalConfig.java: Redisson client connection to local Redis.
-2. AWSConfig.java: AWS config for Redisson client.
+2. AWSConfig.java: AWS config for Redisson client. 
+   To point to AWS elastic cache, update application.properties 
+   set cache.redis.use.local=false, AWS region, and elasticcache replication group id, secret id etc.
+   The code first fetches the password value from AWS Secret Manager, 
+   and then tries to connect to the create the Redis client using that password.
+   The AWS account configured on the machine running this code should have relevant AWS permissions 
+   including sts assume role which is required when fetching secrets from secret manager.
+   Also note the "rediss://" in connection string, with an extra s for SSL connection with Elasticcache.
 3. EmployeeController: Various endpoints for saving, retreiving, deleting cached entries. 
    We also set TTL per entry, which is being returned in the /keys endpoint for reference.
    After saving an employee, if you repeatedly hit cache /keys endpoint, you can see the TTL fall, 
