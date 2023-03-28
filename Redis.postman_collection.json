@@ -46,6 +46,26 @@
 			"response": []
 		},
 		{
+			"name": "getEvents",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/events/1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"events",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
 			"name": "addEmployee",
 			"request": {
 				"method": "POST",
@@ -69,6 +89,36 @@
 					"port": "8080",
 					"path": [
 						"employees",
+						"add"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "addEvent",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"empId\" : 1,\r\n    \"eventType\" : \"STARTED\"\r\n}"
+				},
+				"url": {
+					"raw": "http://localhost:8080/events/add",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"events",
 						"add"
 					]
 				}
