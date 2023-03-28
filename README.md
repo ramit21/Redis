@@ -25,14 +25,21 @@ ping
 ```
 
 ## Prerequisite - Redis setup on AWS
-To run against AWS ElasticCache, you need to first create the AWS ElasticCache.
-Set the ElasticCache password in AWS SecretManager.
+To run against AWS ElasticCache, you need to first create the AWS ElasticCache,
+and set the ElasticCache password in AWS SecretManager.
+
 When creating elastic cache cluster, take t3.micro instance, disable multi az, 
 no. of nodes = 1, failover = no etc. to keep cost low for poc.
 Select SSL enabled.
 Access control = select AUTH default user, and set the AUTH token.
 Do select security group that allows access to machine on which this code is being run on.
-Refer AWSConfig section below for more details on how to connect with ElastiCache from code.
+Give cluster name = app-cache-cluster (as present in application.properties)
+
+Next got to AWS secret manager, and create a secret with name /secret/application-cache, 
+and secret of type key-value pair, with key = redis_password, 
+and value = the auth token entered when creating the cluster.
+
+AWSConfig section below speaks about how code will retrieve the secret and then connect to ElastiCache.
 
 ## About this project
 Redis cache can be used in cache aside pattern using @Cacheable.
