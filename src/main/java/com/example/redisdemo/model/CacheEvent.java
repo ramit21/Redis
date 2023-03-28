@@ -11,7 +11,6 @@ import java.io.Serializable;
 @Jacksonized
 @Builder
 public class CacheEvent implements Serializable {
-    private RecordId recordId;
     private String empId;
     private CacheEventEnum eventType;
 }

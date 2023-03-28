@@ -29,9 +29,10 @@ Redis cache can be used in cache aside pattern using @Cacheable.
 But in this project, we have used a more low level redisTemplate, which gives you more control as to how you save data.
 This way, you can also set TTL per cahce entry as done in this project.
 Other than using Redis Cache, we also use Redis Streams.
-We put events into streams, which other applications can listen to (similar to Kafka).
+We put events into streams, which other applications can listen to (similar to Kafka), using counsumer groups and StreamMessageListenerContainer.
 Or you can have logic in your application to check all events for a given key, 
 before allowing any operations etc.
+You can further use Redis Transactions to ensure that duplicate events don't happen for a given key.
 
 Postman collection with all endpoints configred is also checked in.
 
